@@ -1,0 +1,58 @@
+shoppingCart = {}
+def add_product():
+   
+    if len(shoppingCart) >= 5:
+        print("Cart is full.")
+        return
+    
+    num_items = int(input("Enter the number of items to be added in the stationary shop: "))
+    
+    for i in range(num_items):
+        item_name = input("Enter an item: ")
+        brand_name = input("Enter the brand Name: ")
+        shoppingCart[item_name] = brand_name
+    
+    print("You added following items to the cart:")
+    for item, brand in shoppingCart.items():
+        print(f"{item}: {brand}")
+    
+def search_product():
+    item_name = input("Enter the item to be searched: ")
+    if item_name in shoppingCart:
+        print(f"{item_name}: {shoppingCart[item_name]}")
+    else:
+        print("No product exists with this name.")
+    
+def delete_product():
+  
+    if len(shoppingCart) == 0:
+        print("Cart is empty, no item is found.")
+        return
+    
+    item_name = input("Enter the item to be deleted: ")
+    if item_name in shoppingCart:
+        del shoppingCart[item_name]
+        print(f"{item_name} deleted from the cart.")
+    else:
+        print("No product exists with this name.")
+
+while True:
+    print("\nWELCOME TO THE AMANDO SHOPPING SITE")
+    print("1. Add product to the cart.")
+    print("2. Search the product.")
+    print("3. Delete the product from the cart.")
+    print("4. Quit.")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        add_product()
+    elif choice == 2:
+        search_product()
+    elif choice == 3:
+        delete_product()
+    elif choice == 4:
+        print("thanks for shopping")
+        break
+    else:
+        print("Wrong Option Entered.")
